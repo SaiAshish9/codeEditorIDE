@@ -1,5 +1,5 @@
 # codeEditorIDE
-Extract codeminor zip folder provided in the public directory.
+Extract codeminor zip folder provided in the public directory so that the appropriate editor gets displayed on the screen.
 Run nodemon app.js command inside the directory via command line. 
 Go to localhost:3000 in order to view this ide.  
 
