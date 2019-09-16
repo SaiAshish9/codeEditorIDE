@@ -1,0 +1,11 @@
+<textarea id="editor1" name="name" rows="8" cols="60">
+</textarea>
+<script>
+var editor=CodeMirror.fromTextArea
+(document.getElementById('editor1'),{
+  theme:"darcula",
+  lineNumbers:true,
+  autoCloseTags:true
+})
+editor.setSize("608","150");
+</script>
