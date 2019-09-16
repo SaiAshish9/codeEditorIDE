@@ -9,7 +9,7 @@ language code to judge0 submissions api and fetch the output of that data after 
 ajax calls and submission token generated at the time of successful submission of code.
 Then finally use the parsed data so obtained to display the output.
 
-This is the preview of app prepared so far :
+Following pics are the screenshots of app prepared so far :
 
 ![Capture](https://user-images.githubusercontent.com/43849911/64945990-87b1a500-d88f-11e9-8671-bef3e83c7805.JPG)
 
