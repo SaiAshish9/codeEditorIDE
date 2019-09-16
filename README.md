@@ -6,7 +6,7 @@ Go to localhost:3000 in order to view this ide.
 
 This ide is not completed yet.Basically,I'm trying to use judge0 api in order to send my code present in the editor along with input data,
 language code to judge0 submissions api and fetch the output of that data after sometime when it is completely executed ,with the help of
-my submission token generated at the time of successful submission and ajax calls.
+ajax calls and submission token generated at the time of successful submission of code.
 Then finally use the parsed data so obtained to display the output.
 
 This is the preview of app prepared so far :
