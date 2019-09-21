@@ -1,4 +1,5 @@
-var apiUrl =  "https://api.judge0.com";
+var apiUrl = localStorageGetItem("api-url") || "https://api.judge0.com";
+var wait = localStorageGetItem("wait") || false;
 var stdoutEditor=$("#editor2");
 var stdinEditor=$("#editor1");
 var sourceEditor=$("#editor");
@@ -8,13 +9,7 @@ var timeEnd;
 var timeStart;
 
 
-$(document).ready(function () {
-  $runBtn = $("#run");
-  $runBtn.click(function (e) {
-      run();
-  });
-
-})
+console.log(stdoutEditor.val());
 
 function encode(str) {
     return btoa(unescape(encodeURIComponent(str || "")));
@@ -27,16 +22,6 @@ function decode(bytes) {
     } catch {
         return unescape(escaped);
     }
-}
-
-function handleResult(data) {
-    timeEnd = performance.now();
-    console.log("It took " + (timeEnd - timeStart) + " ms to get submission result.");
-
-    var status = data.status;
-    var stdout = decode(data.stdout);
-
-    stdoutEditor.setValue(stdout);
 }
 
 function localStorageSetItem(key, value) {
@@ -54,16 +39,44 @@ function localStorageGetItem(key) {
   }
 }
 
+function handleResult(data) {
+    timeEnd = performance.now();
+    console.log("It took " + (timeEnd - timeStart) + " ms to get submission result.");
+
+    var status = data.status;
+    var stdout = decode(data.stdout);
+console.log(stdout);
+// alert(stdout);
+    // $('input').val(stdout);
+    // document.getElementById("editor").value=stdout;
+    // stdoutEditor.setValue(stdout);
+    // document.getElementById("editor2").innerHTML=stdout;
+    // console.log(stdoutEditor.val());
+    var textArea = document.getElementById('editor2');
+
+    var editor = CodeMirror.fromTextArea
+    (document.getElementById('editor2'),{
+      theme:"darcula",
+      lineNumbers:true,
+      autoCloseTags:true,
+      tabMode: "indent",
+      overwrite:true
+    })
+    editor.setSize("608","150");
+    editor.getDoc().setValue(stdout);
+}
+
+
 function getIdFromURI() {
   return location.search.substr(1).trim();
 }
 
 function save() {
     var content = JSON.stringify({
-        source_code: encode(sourceEditor.getValue()),
+        source_code: encode(sourceEditor.val()),
         language_id: $selectLanguage.val(),
-        stdin: encode(stdinEditor.getValue()),
-        stdout: encode(stdoutEditor.getValue()),
+        stdin: encode(stdinEditor.val()),
+        stdout: encode(stdoutEditor.val()),
     });
     var filename = "judge0-ide.json";
     var data = {
@@ -88,23 +101,22 @@ function save() {
 }
 
 function run() {
-    if (sourceEditor.getValue().trim() === "") {
+    if (sourceEditor.val().trim() === "") {
         return;
     }
 
 
 
-    stdoutEditor.setValue("");
-    stderrEditor.setValue("");
+    stdoutEditor.val("");
 
 
-    var sourceValue = encode(sourceEditor.getValue());
-    var stdinValue = encode(stdinEditor.getValue());
-    var languageId = $('#option').val();
+    var sourceValue = encode(sourceEditor.val());
+    var stdinValue = encode(stdinEditor.val());
+    var languageId = $("#option").attr("value");
 
-    if (languageId === "44") {
-        sourceValue = sourceEditor.getValue();
-    }
+    // 10;
+
+
 
     var data = {
         source_code: sourceValue,
@@ -146,52 +158,17 @@ function fetchSubmission(submission_token) {
 
 
 
-var sources = {
-    1: bashSource,
-    2: bashSource,
-    3: basicSource,
-    4: cSource,
-    5: cSource,
-    6: cSource,
-    7: cSource,
-    8: cSource,
-    9: cSource,
-    10: cppSource,
-    11: cppSource,
-    12: cppSource,
-    13: cppSource,
-    14: cppSource,
-    15: cppSource,
-    16: csharpSource,
-    17: csharpSource,
-    18: clojureSource,
-    19: crystalSource,
-    20: elixirSource,
-    21: erlangSource,
-    22: goSource,
-    23: haskellSource,
-    24: haskellSource,
-    25: insectSource,
-    26: javaSource,
-    27: javaSource,
-    28: javaSource,
-    29: javaScriptSource,
-    30: javaScriptSource,
-    31: ocamlSource,
-    32: octaveSource,
-    33: pascalSource,
-    34: pythonSource,
-    35: pythonSource,
-    36: pythonSource,
-    37: pythonSource,
-    38: rubySource,
-    39: rubySource,
-    40: rubySource,
-    41: rubySource,
-    42: rustSource,
-    43: textSource,
-    44: executableSource,
-};
+$(document).ready(function () {
+  $runBtn = $("#run");
+  console.log(sourceEditor.val());
+  $runBtn.click(function (e) {
+    console.log("clicked on run");
+
+      run();
+  });
+
+})
+
 var fileNames = {
     1: "script.sh",
     2: "script.sh",
