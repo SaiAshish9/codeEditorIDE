@@ -2,11 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
 <script src="codemirror/lib/codemirror.js" charset="utf-8"></script>
@@ -18,12 +16,22 @@
 
 <script src="codemirror/addon/edit/closetag.js" charset="utf-8"></script>
 <script src="codemirror/addon/mode/simple.js" charset="utf-8"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/golden-layout/1.5.9/goldenlayout.min.js" integrity="sha256-NhJAZDfGgv4PiB+GVlSrPdh3uc75XXYSM4su8hgTchI=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/golden-layout/1.5.9/css/goldenlayout-base.css" integrity="sha256-oIDR18yKFZtfjCJfDsJYpTBv1S9QmxYopeqw2dO96xM=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/golden-layout/1.5.9/css/goldenlayout-dark-theme.css" integrity="sha256-ygw8PvSDJJUGLf6Q9KIQsYR3mOmiQNlDaxMLDOx9xL0=" crossorigin="anonymous" />
   </head>
   <body >
 
   <nav class="navbar  navbar-expand-lg  navbar-dark bg-dark">
-    <button type="button" class="btn btn-danger " style="border-radius:20% !important">
+    <button  id="run" type="button" class="btn btn-danger " href="/"style="border-radius:20% !important">
       <i class="fa fa-caret-right" aria-hidden="true" ></i>
       Run
     </button>
@@ -37,9 +45,13 @@
     </div> -->
 
 
-    <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="/#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <%=  option %>
+    <li class="nav-item dropdown"  >
+        <% if(option.length===3){ %>
+          <a class="nav-item nav-link dropdown-toggle mr-md-2" value="10" href="/#" id="option" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">c++
+  <%}%>
+  <% if(option.length===6){ %>
+    <a class="nav-item nav-link dropdown-toggle mr-md-2" href="/#" value="34" id="option" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">python
+  <%}%>
       </a>
       <div class="dropdown-menu bg-dark "  style="height:70%;  " aria-labelledby="bd-versions">
         <a class="dropdown-item active bg-dark" style=" color:#FFF;" href="/#">c++</a>
@@ -91,7 +103,7 @@
 
 
 
-            <div class="card col-5" style=" margin:15px; margin-left:75px; margin-right:30px;">
+            <div   class="card col-5" style=" margin:15px; margin-left:75px; margin-right:30px;">
           <div class="card-header" style="background-color:#272727">
             Input
             <i class="fa fa-clone" aria-hidden="true" style="position:absolute; right:25px !important"></i>
@@ -101,8 +113,8 @@
           <!-- </div> -->
         </div>
 
-            <div class="card col-5" style="margin:15px;">
-              <div class="card-header" style="background-color:#272727">
+            <div class="card col-5" id="op" style="margin:15px;">
+              <div  class="card-header"  style="background-color:#272727">
                 Output
               <i class="fa fa-clone" aria-hidden="true" style="position:absolute; right:25px !important"></i>
               </div>
@@ -120,5 +132,10 @@
 
 
 </div>
-<script src="app.js" charset="utf-8"></script>
+
+<script  type="text/javascript" src="app.js" charset="utf-8"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
 </body>
