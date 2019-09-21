@@ -11,12 +11,13 @@ Then I finally used the parsed data so obtained to display the output.
 
 Few screenshots of  this app are as follows :
 
+![Capture2](https://user-images.githubusercontent.com/43849911/65373068-eb740d80-dc95-11e9-9258-f676191c5495.JPG)
+
 ![Capture3](https://user-images.githubusercontent.com/43849911/65373065-e9aa4a00-dc95-11e9-8b0c-5bbebb1a9c9a.JPG)
 
 ![Capture](https://user-images.githubusercontent.com/43849911/65373066-eadb7700-dc95-11e9-8dec-daf5da6cd6c4.JPG)
 
 ![Capture1](https://user-images.githubusercontent.com/43849911/65373067-eadb7700-dc95-11e9-9e43-8f517e91240a.JPG)
 
-![Capture2](https://user-images.githubusercontent.com/43849911/65373068-eb740d80-dc95-11e9-9258-f676191c5495.JPG)
 
 
